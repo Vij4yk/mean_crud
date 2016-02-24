@@ -1,5 +1,5 @@
 <!DOCTYPE>
-<html ng-app>
+<html ng-app="geoApp">
 <head>
   <title>DEMO MEAN CRUD APP</title>
   <style>
@@ -10,26 +10,52 @@
 		float:left;
 		width: 20%;
 	}
+	.clear {
+		clear: both;
+	}
   </style>
 </head>
 <body>
 
 
-<div class="container">
+<div class="container" ng-controller="mainCtrl">
 	<h1>Geographics</h1>
 	<div class="header">
 		<ul>
 			<li>Country</li>
 			<li>Capital</li>
-			<li>Population</li>
+			<li>Continent</li>
+			<li>Action</li>
 		</ul>
+		<div class="clear"></div>
 	</div>
 	<div class="content">
 		<ul>
-			<li></li>
+			<li>
+				<input ng-model="country.country" />
+			</li>
+			<li>
+				<input ng-model="country.capital" />
+			</li>
+			<li>
+				<input ng-model="country.continent" />
+			</li>
+			<li>
+				<button class="add-btn" ng-click="addCountry()">Add country</button>
+			</li>
 		</ul>
+		<div class="clear"></div>
+	</div>
+	<div class="content" ng-repeat="country in countries">
+		<ul>
+			<li>{{country.country}}</li>
+			<li>{{country.capital}}</li>
+			<li>{{country.continent}}</li>
+		</ul>
+		<div class="clear"></div>
 	</div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
+<script src="controllers/controller.js"></script>
 </body>
 </html>
