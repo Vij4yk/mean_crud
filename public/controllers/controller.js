@@ -10,7 +10,8 @@ geoApp.controller('mainCtrl', function($scope, $http) {
 	};
 
 	refresh();
-
+	
+	// ADD Country
 	$scope.addCountry = function(){
 		$http.post('/countries', $scope.country)
 		.success(function(response){
