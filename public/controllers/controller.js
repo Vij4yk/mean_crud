@@ -18,17 +18,25 @@ geoApp.controller('mainCtrl', function($scope, $http) {
 		});
 	}
 
-	$scope.remove = function(id){
+	$scope.removeCountry = function(id){
 		$http.delete('/countries/' + id ).success(function(response){
 			refresh();
 		})
 	}
 
-	$scope.edit = function(id, response){
+	$scope.editCountry = function(id, response){
 		$http.get('/countries/' + id ).success(function(response){
 			$scope.country = response;
 			
 		})
-	}	
+	}
+
+	$scope.updateCountry = function(){
+		$http.put('/countries/' + $scope.country._id, $scope.country).success(function(response){
+			refresh();
+			$scope.country = "";
+		})
+		
+	}
 })
 

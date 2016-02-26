@@ -42,7 +42,7 @@
 			</li>
 			<li>
 				<button class="add-btn" ng-click="addCountry()">Add country</button>
-				<button class="update-btn" ng-click="update()">Update country</button>
+				<button class="update-btn" ng-click="updateCountry()">Update country</button>
 			</li>
 		</ul>
 		<div class="clear"></div>
@@ -53,8 +53,8 @@
 			<li>{{country.capital}}</li>
 			<li>{{country.continent}}</li>
 			<li>
-				<button class="remove-btn" ng-click="remove(country._id)">Remove country</button>
-				<button class="edit-btn" ng-click="edit(country._id)">Edit country</button>
+				<button class="remove-btn" ng-click="removeCountry(country._id)">Remove country</button>
+				<button class="edit-btn" ng-click="editCountry(country._id)">Edit country</button>
 			</li>
 		</ul>
 		<div class="clear"></div>
