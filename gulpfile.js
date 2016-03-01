@@ -16,10 +16,10 @@ gulp.task('scripts', function(){
 });
 
 gulp.task('styles', function() {
-	return sass('scss/*.scss', {
+	return sass('public/scss/*.scss', {
 		style: 'compressed'
 	})
-	.pipe(gulp.dest('css'));
+	.pipe(gulp.dest('public/css'));
 });
 
 gulp.task('watch', function(){
