@@ -1,29 +1,36 @@
+
 var gulp = require('gulp'),
-uglify = require('gulp-uglify'),
-sass = require('gulp-ruby-sass');
+sass = require('gulp-sass'),
+browserSync = require('browser-sync'),
+nodemon = require('gulp-nodemon'),
+reload = browserSync.reload;
 
 
-// gulp.task('default', function(){
-	// gulp.src('js/*.js')
-	// .pipe(uglify())
-	// .pipe(gulp.dest('minjs'))
-// })
-
-gulp.task('scripts', function(){
-	gulp.src('js/*.js')
-	.pipe(uglify())
-	.pipe(gulp.dest('minjs'))	
+gulp.task('sass', function () {
+	return gulp.src('public/scss/*.scss')
+	.pipe(sass())
+	.pipe(gulp.dest('public/css'))
+	.pipe(reload({stream:true}));
 });
 
-gulp.task('styles', function() {
-	return sass('public/scss/*.scss', {
-		style: 'compressed'
-	})
-	.pipe(gulp.dest('public/css'));
+gulp.task('browser-sync', ['nodemon'], function() {
+    browserSync.init(null, {
+        proxy: "http://localhost:1000",
+		port: 3000
+    });
 });
 
-gulp.task('watch', function(){
-	gulp.watch('', [])
-})
+gulp.task('default', ['sass', 'browser-sync'], function () {
+	gulp.watch("public/scss/*.scss", ['sass']);
+	gulp.watch(['public/*.html'], reload);
+});
 
-gulp.task('default', ['styles'])
+gulp.task('nodemon', function (cb) {
+	var called = false;
+	return nodemon({script: 'server.js'}).on('start', function () {
+		if (!called) {
+			called = true;
+			cb();
+		}
+	});
+});

@@ -1,7 +1,25 @@
 body {
-	background: #999;
+	background: #fff;
 }
 
-h1 {
- font-size: 40px;
+div {
+	margin: 0;
+}
+.container {
+	padding-left: 10%;
+	padding-right: 10%;
+	
+	h1 {
+		font-size: 36px;
+	}
+	
+	.header, .content {
+		ul {
+			padding: 0;
+		}
+	}
+	
+	.header {
+		h3 {margin:0}
+	}
 }
